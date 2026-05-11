@@ -641,25 +641,30 @@ const THEMES = [
     desc: 'Arborescence, extensions et unités',
     exercises: [
       {
-        id: 'fichiers-sorter',
-        type: 'sorter',
+        id: 'fichiers-explorer',
+        type: 'filemanager',
         icon: '🗂️',
-        title: 'Classer les types de fichiers',
+        title: 'L\'explorateur de fichiers',
         data: {
-          instruction: 'Classe chaque extension dans le bon type de fichier.',
-          categories: ['Texte / Doc', 'Image', 'Son', 'Tableur'],
-          cols: 4,
-          items: [
-            { label: '.docx', cat: 'Texte / Doc' },
-            { label: '.odt', cat: 'Texte / Doc' },
-            { label: '.pdf', cat: 'Texte / Doc' },
-            { label: '.jpg', cat: 'Image' },
-            { label: '.png', cat: 'Image' },
-            { label: '.gif', cat: 'Image' },
-            { label: '.mp3', cat: 'Son' },
-            { label: '.wav', cat: 'Son' },
-            { label: '.xlsx', cat: 'Tableur' },
-            { label: '.ods', cat: 'Tableur' }
+          folders: [
+            { name: 'Documents',  icon: '📄', color: '#4361ee' },
+            { name: 'Images',     icon: '🖼️', color: '#e11d48' },
+            { name: 'Musique',    icon: '🎵', color: '#8b5cf6' },
+            { name: 'Tableurs',   icon: '📊', color: '#10b981' },
+            { name: 'Vidéos',     icon: '🎬', color: '#f59e0b' }
+          ],
+          files: [
+            { name: 'rapport_vacances',  ext: '.docx', folder: 'Documents' },
+            { name: 'notes_cours',       ext: '.odt',  folder: 'Documents' },
+            { name: 'cours_maths',       ext: '.pdf',  folder: 'Documents' },
+            { name: 'photo_famille',     ext: '.jpg',  folder: 'Images'    },
+            { name: 'logo_ecole',        ext: '.png',  folder: 'Images'    },
+            { name: 'animation',         ext: '.gif',  folder: 'Images'    },
+            { name: 'ma_chanson',        ext: '.mp3',  folder: 'Musique'   },
+            { name: 'podcast_science',   ext: '.ogg',  folder: 'Musique'   },
+            { name: 'budget_mensuel',    ext: '.xlsx', folder: 'Tableurs'  },
+            { name: 'comptes_classe',    ext: '.ods',  folder: 'Tableurs'  },
+            { name: 'film_classe',       ext: '.mp4',  folder: 'Vidéos'    }
           ]
         }
       },

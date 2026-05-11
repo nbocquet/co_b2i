@@ -176,7 +176,7 @@ const App = {
       this._showResult(themeId, exId, score, max, stars, theme.color);
     };
 
-    const engines = { quiz: QuizGame, truefal: TrueFalseGame, sorter: SorterGame, binary: BinaryGame, rgb: RGBGame, caesar: CaesarGame, fillblank: FillBlankGame };
+    const engines = { quiz: QuizGame, truefal: TrueFalseGame, sorter: SorterGame, binary: BinaryGame, rgb: RGBGame, caesar: CaesarGame, fillblank: FillBlankGame, filemanager: FileManagerGame };
     const engine = engines[ex.type];
     if (!engine) { main.textContent = 'Exercice non disponible.'; return; }
 
