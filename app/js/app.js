@@ -89,7 +89,7 @@ const App = {
     const main = this._getMain();
     main.innerHTML = `
       <div class="home-hero">
-        <h2>Exercices B2i 🖥️</h2>
+        <h2>Éducation numérique 🖥️</h2>
         <p>Choisis un thème pour t'entraîner</p>
       </div>
       <div class="themes-grid">

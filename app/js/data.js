@@ -1,4 +1,4 @@
-/* All exercise data for the B2i app */
+/* All exercise data — Éducation numérique Informatique 9e (Genève) */
 const THEMES = [
   {
     id: 'composants',
