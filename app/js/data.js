@@ -1026,6 +1026,126 @@ const THEMES = [
             }
           ]
         }
+      },
+      {
+        id: 'fichiers-metadata',
+        type: 'metaviewer',
+        icon: '🔍',
+        title: 'Lire les métadonnées',
+        data: {
+          files: [
+            {
+              name: 'vacances_barcelone.jpg',
+              typeLabel: 'Image JPEG',
+              icon: '🖼️',
+              fields: [
+                { label: 'Type',             value: 'Image JPEG' },
+                { label: 'Taille',           value: '3,2 Mo (3 355 648 octets)' },
+                { label: 'Dimensions',       value: '4032 × 3024 pixels' },
+                { label: 'Résolution',       value: '72 DPI' },
+                { label: 'Date de prise de vue', value: '14 juillet 2024, 14 h 32' },
+                { label: 'Date de modification', value: '20 juillet 2024' },
+                { label: 'Auteur',           value: 'Marie Dupont' },
+                { label: 'Appareil',         value: 'Apple iPhone 13 Pro' },
+                { label: 'GPS',              value: '41.3874° N, 2.1686° E' }
+              ]
+            },
+            {
+              name: 'imagine.mp3',
+              typeLabel: 'Audio MP3',
+              icon: '🎵',
+              fields: [
+                { label: 'Type',         value: 'Audio MPEG (MP3)' },
+                { label: 'Taille',       value: '4,7 Mo (4 931 584 octets)' },
+                { label: 'Durée',        value: '3 min 07 s' },
+                { label: 'Titre',        value: 'Imagine' },
+                { label: 'Artiste',      value: 'John Lennon' },
+                { label: 'Album',        value: 'Imagine' },
+                { label: 'Année',        value: '1971' },
+                { label: 'Genre',        value: 'Rock' },
+                { label: 'Débit binaire', value: '192 kbit/s' },
+                { label: 'Encodeur',     value: 'iTunes 12.4' }
+              ]
+            }
+          ],
+          questions: [
+            {
+              q: 'Quelle est la taille du fichier <em>vacances_barcelone.jpg</em> ?',
+              file: 0, highlight: 'Taille',
+              answers: ['3,2 Mo', '4,7 Mo', '32 Mo', '3,2 Ko'],
+              correct: 0,
+              explanation: 'Le champ "Taille" indique 3,2 Mo (soit 3 355 648 octets). Un octet = 8 bits ; un Mo (mégaoctet) = 1 000 000 octets environ.'
+            },
+            {
+              q: 'Quelle est la résolution de la photo <em>vacances_barcelone.jpg</em> ?',
+              file: 0, highlight: 'Dimensions',
+              answers: ['4032 × 3024 pixels', '1920 × 1080 pixels', '72 × 72 pixels', '800 × 600 pixels'],
+              correct: 0,
+              explanation: '"Dimensions" indique 4032 × 3024 pixels, soit plus de 12 mégapixels au total (4032 × 3024 = 12 192 768 pixels).'
+            },
+            {
+              q: 'À quoi servent les métadonnées GPS du fichier <em>vacances_barcelone.jpg</em> ?',
+              file: 0, highlight: 'GPS',
+              answers: [
+                'Indiquer l\'endroit où la photo a été prise',
+                'Indiquer la vitesse de l\'appareil au moment de la prise',
+                'Identifier le réseau Wi-Fi utilisé',
+                'Mesurer la luminosité lors de la prise de vue'
+              ],
+              correct: 0,
+              explanation: 'Les coordonnées GPS (41.3874° N, 2.1686° E) enregistrent automatiquement la position géographique lors de la prise de vue — ici, à Barcelone, Espagne.'
+            },
+            {
+              q: 'Comment sait-on quel appareil a capturé la photo <em>vacances_barcelone.jpg</em> ?',
+              file: 0, highlight: 'Appareil',
+              answers: [
+                'La métadonnée "Appareil" stocke le modèle du smartphone ou de l\'appareil photo',
+                'La couleur dominante de la photo révèle la marque',
+                'L\'extension .jpg indique que c\'est un iPhone',
+                'C\'est impossible à savoir depuis les métadonnées'
+              ],
+              correct: 0,
+              explanation: 'Les smartphones et appareils photo enregistrent automatiquement leur modèle dans les métadonnées EXIF. Ici : Apple iPhone 13 Pro. C\'est utile mais aussi une donnée privée !'
+            },
+            {
+              q: 'Quelle est la durée du fichier <em>imagine.mp3</em> ?',
+              file: 1, highlight: 'Durée',
+              answers: ['3 min 07 s', '4 min 07 s', '1 h 07 min', '3 min 47 s'],
+              correct: 0,
+              explanation: 'La durée est une métadonnée propre aux fichiers audio et vidéo. Elle est stockée dans l\'en-tête du fichier MP3 (balise ID3) et ne dépend pas du nom du fichier.'
+            },
+            {
+              q: 'En quelle année a été enregistrée la chanson "Imagine" d\'après ses métadonnées ?',
+              file: 1, highlight: 'Année',
+              answers: ['1971', '1969', '1984', '2001'],
+              correct: 0,
+              explanation: 'La métadonnée "Année" indique 1971, date de sortie de l\'album "Imagine" de John Lennon. Ces informations sont stockées dans des balises ID3 intégrées au fichier MP3.'
+            },
+            {
+              q: 'Que signifie "192 kbit/s" dans les métadonnées du fichier <em>imagine.mp3</em> ?',
+              file: 1, highlight: 'Débit binaire',
+              answers: [
+                'Le débit binaire : 192 000 bits d\'audio sont encodés par seconde',
+                'La fréquence sonore maximale du fichier',
+                'La taille totale du fichier en kilobits',
+                'Le numéro de version du format MP3'
+              ],
+              correct: 0,
+              explanation: 'Le débit binaire (bitrate) indique la quantité d\'information encodée chaque seconde. Plus il est élevé, meilleure est la qualité audio. 192 kbit/s est une qualité courante pour la musique.'
+            },
+            {
+              q: 'Quelle différence principale observe-t-on entre les métadonnées du JPG et celles du MP3 ?',
+              answers: [
+                'Le JPG stocke des données techniques de photo (GPS, appareil, pixels) ; le MP3 stocke des infos musicales (artiste, album, genre)',
+                'Les deux fichiers ont exactement les mêmes métadonnées',
+                'Le JPG n\'a pas de métadonnées, contrairement au MP3',
+                'Les métadonnées du JPG sont visibles directement dans l\'image'
+              ],
+              correct: 0,
+              explanation: 'Chaque format de fichier définit ses propres champs de métadonnées : le JPG utilise la norme EXIF (données photo), le MP3 utilise les balises ID3 (données musicales). Les métadonnées dépendent toujours du type de contenu.'
+            }
+          ]
+        }
       }
     ]
   },
