@@ -138,7 +138,11 @@ const App = {
             binary: 'Jeu binaire — Bits interactifs',
             rgb: 'Mélangeur RVB',
             caesar: 'Chiffre de César',
-            fillblank: 'Texte à compléter'
+            fillblank: 'Texte à compléter',
+            filemanager: 'Explorateur de fichiers',
+            emailcomposer: 'Compose l\'e-mail — À / Cc / Cci',
+            phishing: 'Détective — Légitime ou phishing ?',
+            emailrouter: 'Quelle action choisir ?'
           }[ex.type] || ex.type;
 
           return `
@@ -176,7 +180,7 @@ const App = {
       this._showResult(themeId, exId, score, max, stars, theme.color);
     };
 
-    const engines = { quiz: QuizGame, truefal: TrueFalseGame, sorter: SorterGame, binary: BinaryGame, rgb: RGBGame, caesar: CaesarGame, fillblank: FillBlankGame, filemanager: FileManagerGame };
+    const engines = { quiz: QuizGame, truefal: TrueFalseGame, sorter: SorterGame, binary: BinaryGame, rgb: RGBGame, caesar: CaesarGame, fillblank: FillBlankGame, filemanager: FileManagerGame, emailcomposer: EmailComposerGame, phishing: PhishingGame, emailrouter: EmailRouterGame };
     const engine = engines[ex.type];
     if (!engine) { main.textContent = 'Exercice non disponible.'; return; }
 

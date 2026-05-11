@@ -457,6 +457,244 @@ const THEMES = [
     desc: 'E-mails, adresses et communication',
     exercises: [
       {
+        id: 'courriel-composer',
+        type: 'emailcomposer',
+        icon: '✉️',
+        title: 'Compose l\'e-mail',
+        data: {
+          scenarios: [
+            {
+              situation: 'Tu veux envoyer ton devoir de français à ton enseignante Mme Martin. Elle est la seule destinataire.',
+              addresses: [
+                { label: 'Mme Martin', addr: 'mmartin@eduge.ch',  field: 'to'   },
+                { label: 'M. Dupuis',  addr: 'jdupuis@eduge.ch',  field: 'none' },
+                { label: 'Maman',      addr: 'parent@gmail.com',  field: 'none' }
+              ],
+              objets: [
+                { text: 'Devoir de français — chapitre 3', correct: true  },
+                { text: 'Salut !',                         correct: false },
+                { text: '(pas d\'objet)',                  correct: false }
+              ]
+            },
+            {
+              situation: 'Tu informes ton prof principal (M. Rossi) de ton absence. Tu veux que tes parents (parent@gmail.com) reçoivent une copie visible de tous.',
+              addresses: [
+                { label: 'M. Rossi (prof principal)', addr: 'arossi@eduge.ch',  field: 'to' },
+                { label: 'Maman',                     addr: 'parent@gmail.com', field: 'cc' },
+                { label: 'Mme Favre (infirmière)',    addr: 'sfavre@eduge.ch',  field: 'none' }
+              ],
+              objets: [
+                { text: 'Absence du 12 mai — Léa Müller',  correct: true  },
+                { text: 'RE: cours',                        correct: false },
+                { text: 'Bonjour monsieur',                 correct: false }
+              ]
+            },
+            {
+              situation: 'Tu envoies les consignes du projet à tes 3 coéquipiers. Vous travaillez ensemble, donc chacun peut voir les adresses des autres.',
+              addresses: [
+                { label: 'Léa',  addr: 'lea.favre@eduge.ch',   field: 'to'   },
+                { label: 'Marc', addr: 'marc.perrin@eduge.ch',  field: 'to'   },
+                { label: 'Sofia',addr: 'sofia.blanc@eduge.ch',  field: 'to'   },
+                { label: 'Prof', addr: 'jdupuis@eduge.ch',      field: 'none' }
+              ],
+              objets: [
+                { text: 'Consignes projet Sciences — groupe 4', correct: true  },
+                { text: 'Fwd: truc important',                  correct: false },
+                { text: 'Hello',                                correct: false }
+              ]
+            },
+            {
+              situation: 'Tu envoies la newsletter de ta classe à 20 parents. Les parents ne doivent PAS voir les adresses des autres.',
+              addresses: [
+                { label: 'Parent A', addr: 'parent.a@gmail.com', field: 'bcc' },
+                { label: 'Parent B', addr: 'parent.b@bluewin.ch', field: 'bcc' },
+                { label: 'Parent C', addr: 'parent.c@eduge.ch',  field: 'bcc' },
+                { label: 'M. Rossi (copie pour archiver)', addr: 'arossi@eduge.ch', field: 'cc' }
+              ],
+              objets: [
+                { text: 'Newsletter classe 9B — mai 2025',  correct: true  },
+                { text: 'Info',                             correct: false },
+                { text: 'RE: parents',                      correct: false }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        id: 'courriel-phishing',
+        type: 'phishing',
+        icon: '🕵️',
+        title: 'Détective phishing',
+        data: {
+          emails: [
+            {
+              from:    'support@eduge-officiel.net',
+              fromLabel: 'Support EduGE',
+              to:      'toi@eduge.ch',
+              subject: '⚠️ URGENT : Votre compte va être supprimé dans 24h',
+              date:    'lun. 5 mai, 23:47',
+              body:    'Bonjour utilisateur,\n\nVotre compte eduge.ch va être <strong>définitivement supprimé</strong> dans 24 heures faute de vérification. Cliquez immédiatement sur le lien ci-dessous pour sauvegarder votre compte et entrer votre mot de passe.\n\n→ http://eduge-officiel.net/login-verification\n\nSi vous ne répondez pas, vous perdrez tous vos fichiers.\n\nL\'équipe Sécurité EduGE',
+              legit:   false,
+              flags: [
+                { label: 'Domaine incorrect',    detail: '« eduge-officiel.net » n\'est pas le vrai domaine. Le vrai est eduge.ch.' },
+                { label: 'Ton très urgent',      detail: '"URGENT", "24h", "supprimé" : les phishings créent la panique pour faire agir vite.' },
+                { label: 'Demande de mot de passe', detail: 'Aucun service officiel ne demande ton mot de passe par e-mail.' },
+                { label: 'Heure suspecte',       detail: 'Envoyé à 23h47 : peu habituel pour un service officiel.' }
+              ]
+            },
+            {
+              from:    'direction@eduge.ch',
+              fromLabel: 'Direction EduGE',
+              to:      'toi@eduge.ch',
+              subject: 'Portes ouvertes — samedi 17 mai',
+              date:    'mar. 6 mai, 08:15',
+              body:    'Bonjour,\n\nNous avons le plaisir de vous inviter aux portes ouvertes de l\'établissement le samedi 17 mai de 9h à 12h.\n\nAu programme : visites des ateliers, présentations des projets d\'élèves et rencontre avec les enseignants.\n\nCordialement,\nLa direction',
+              legit:   true,
+              flags:   []
+            },
+            {
+              from:    'noreply@eduge.ch.account-login.info',
+              fromLabel: 'EduGE Accounts',
+              to:      'toi@eduge.ch',
+              subject: 'Réinitialisez votre mot de passe maintenant',
+              date:    'mer. 7 mai, 14:02',
+              body:    'Votre mot de passe EduGE expire aujourd\'hui.\n\nCliquez ici pour le renouveler immédiatement :\n→ http://eduge.ch.account-login.info/reset\n\nSans action de votre part, vous ne pourrez plus accéder à vos cours.',
+              legit:   false,
+              flags: [
+                { label: 'Domaine trompeur',   detail: 'Le vrai domaine est ce qui vient AVANT le premier slash. Ici : « eduge.ch.account-login.info » — ce n\'est PAS eduge.ch !' },
+                { label: 'Lien suspect',       detail: 'Le lien contient "account-login.info", pas eduge.ch. Ne jamais cliquer sans vérifier l\'URL complète.' },
+                { label: 'Pression temporelle',detail: '"expire aujourd\'hui", "immédiatement" : technique classique de phishing.' }
+              ]
+            },
+            {
+              from:    'mmartin@eduge.ch',
+              fromLabel: 'M. Martin (Français)',
+              to:      'classe9b@eduge.ch',
+              subject: 'Rappel : rédaction à rendre pour vendredi',
+              date:    'jeu. 8 mai, 09:30',
+              body:    'Bonjour à tous,\n\nJe vous rappelle que la rédaction sur le thème "Mon lieu préféré" est à rendre par e-mail avant vendredi 23h59.\n\nNombre de mots : 200 minimum.\nFormat : fichier .odt ou .docx.\n\nBonne écriture !\nM. Martin',
+              legit:   true,
+              flags:   []
+            },
+            {
+              from:    'concours@prix-smartphone-ch.com',
+              fromLabel: 'Concours Suisse',
+              to:      'toi@eduge.ch',
+              subject: '🎉 Félicitations ! Vous avez gagné un iPhone 16 Pro !',
+              date:    'ven. 9 mai, 11:11',
+              body:    'Bonjour,\n\nVous avez été sélectionné(e) parmi 1 000 000 participants ! Vous avez GAGNÉ un iPhone 16 Pro gratuit.\n\nPour réclamer votre prix, cliquez ici et entrez votre adresse et votre numéro de carte bancaire pour couvrir les frais d\'envoi (1 CHF).\n\n→ Réclamer mon prix maintenant\n\nOffre valable 1 heure seulement !',
+              legit:   false,
+              flags: [
+                { label: 'Trop beau pour être vrai', detail: 'Un iPhone gagné sans participer à rien ? C\'est un piège classique.' },
+                { label: 'Demande de CB',        detail: 'Même "1 CHF" est un prétexte pour voler les coordonnées bancaires.' },
+                { label: 'Domaine inconnu',      detail: '« prix-smartphone-ch.com » n\'a aucun lien avec Apple ou une organisation officielle.' },
+                { label: 'Urgence artificielle', detail: '"Offre valable 1 heure" : pression pour faire agir sans réfléchir.' }
+              ]
+            },
+            {
+              from:    'lea.favre@eduge.ch',
+              fromLabel: 'Léa Favre (camarade)',
+              to:      'toi@eduge.ch',
+              subject: 'Regarde ça, c\'est dingue !!',
+              date:    'sam. 10 mai, 22:03',
+              body:    'Salut !!\n\nT\'as vu cette vidéo ?? Elle parle de toi lol 😂😂\n\n→ http://bit.ly/v1d30-pr1v3\n\nClique vite avant qu\'elle soit supprimée !',
+              legit:   false,
+              flags: [
+                { label: 'Lien raccourci suspect', detail: 'Les liens raccourcis (bit.ly etc.) cachent la vraie destination. Ne pas cliquer sans savoir où ça mène.' },
+                { label: 'Prétexte émotionnel',   detail: '"Elle parle de toi" : technique pour piquer la curiosité et faire cliquer sans réfléchir.' },
+                { label: 'Compte peut-être piraté', detail: 'Le compte de Léa a peut-être été compromis. Un message bizarre d\'un ami = prudence.' },
+                { label: 'Heure suspecte',         detail: 'Envoyé à 22h03 un samedi : comportement inhabituel pour ce type de message.' }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        id: 'courriel-router',
+        type: 'emailrouter',
+        icon: '📬',
+        title: 'Quelle action choisir ?',
+        data: {
+          scenarios: [
+            {
+              email: {
+                from: 'mmartin@eduge.ch', fromLabel: 'M. Martin',
+                to: 'classe9b@eduge.ch', toLabel: 'classe9b (toute la classe)',
+                subject: 'Qui a les notes du cours de lundi ?',
+                body: 'Bonjour à tous,\n\nJe cherche quelqu\'un qui aurait pris des notes complètes lors du cours de lundi dernier. Si c\'est ton cas, réponds-moi directement.\n\nMerci,\nM. Martin'
+              },
+              question: 'Tu as les notes. Comment réponds-tu ?',
+              actions: [
+                { label: '↩ Répondre',         value: 'reply',    correct: true,  explanation: 'Correct ! Le prof demande une réponse directe. Utiliser "Répondre à tous" enverrait ta réponse à toute la classe inutilement.' },
+                { label: '↩↩ Répondre à tous', value: 'replyall', correct: false, explanation: 'Non. Seul M. Martin a besoin de ta réponse. "Répondre à tous" enverrait un message inutile à tous les élèves.' },
+                { label: '→ Transférer',        value: 'forward',  correct: false, explanation: 'Non. Transférer sert à envoyer un e-mail à quelqu\'un qui ne l\'a pas reçu, pas pour répondre.' },
+                { label: '🗑️ Supprimer',        value: 'delete',   correct: false, explanation: 'Non. Tu peux aider, il faut répondre !' }
+              ]
+            },
+            {
+              email: {
+                from: 'arossi@eduge.ch', fromLabel: 'M. Rossi (prof principal)',
+                to: 'toi@eduge.ch', toLabel: 'toi',
+                subject: 'Confirmation stage — réponse souhaitée',
+                body: 'Bonjour,\n\nPeux-tu confirmer que tu seras bien présent(e) au stage de ski du 20 au 24 janvier ? J\'ai besoin de ta réponse avant vendredi.\n\nM. Rossi'
+              },
+              question: 'Tu veux confirmer ta présence. Que fais-tu ?',
+              actions: [
+                { label: '↩ Répondre',         value: 'reply',    correct: true,  explanation: 'Parfait ! M. Rossi t\'a écrit directement et attend une réponse de toi seul(e).' },
+                { label: '↩↩ Répondre à tous', value: 'replyall', correct: false, explanation: 'Non. L\'e-mail t\'était adressé uniquement. "Répondre à tous" n\'a aucun sens ici.' },
+                { label: '→ Transférer',        value: 'forward',  correct: false, explanation: 'Non. Tu n\'as pas à transmettre cet e-mail à quelqu\'un d\'autre.' },
+                { label: '🗑️ Supprimer',        value: 'delete',   correct: false, explanation: 'Non. Tu dois répondre avant vendredi !' }
+              ]
+            },
+            {
+              email: {
+                from: 'sofia.blanc@eduge.ch', fromLabel: 'Sofia',
+                to: 'toi@eduge.ch', toLabel: 'toi',
+                subject: 'Fwd: consignes du projet — à faire circuler',
+                body: 'Salut,\n\nJ\'ai reçu les consignes finales du projet de Mme Favre. Il faut les envoyer à tous les membres de notre groupe (Marc et Léa). Je n\'ai pas leurs adresses, tu les as ?\n\nSofia'
+              },
+              question: 'Tu as les adresses de Marc (marc.perrin@eduge.ch) et Léa (lea.favre@eduge.ch). Que fais-tu ?',
+              actions: [
+                { label: '↩ Répondre',         value: 'reply',    correct: false, explanation: 'Non. Répondre envoie uniquement à Sofia. Marc et Léa n\'auront pas les consignes.' },
+                { label: '↩↩ Répondre à tous', value: 'replyall', correct: false, explanation: 'Non. Il n\'y a que toi et Sofia dans cet échange. Marc et Léa ne sont pas inclus.' },
+                { label: '→ Transférer',        value: 'forward',  correct: true,  explanation: 'Exact ! Transférer permet d\'envoyer les consignes à Marc et Léa qui ne les ont pas encore reçues.' },
+                { label: '🗑️ Supprimer',        value: 'delete',   correct: false, explanation: 'Non. Ton groupe a besoin des consignes !' }
+              ]
+            },
+            {
+              email: {
+                from: 'gains@super-loterie-ch.net', fromLabel: 'Super Loterie Suisse',
+                to: 'toi@eduge.ch', toLabel: 'toi',
+                subject: '💰 Vous avez gagné 5000 CHF ! Réclamez maintenant',
+                body: 'Félicitations ! Votre adresse a été tirée au sort. Pour recevoir vos 5000 CHF, cliquez sur le lien et entrez vos coordonnées bancaires dans les 2 heures.\n\n→ Réclamer mes gains'
+              },
+              question: 'Tu n\'as jamais participé à aucune loterie. Que fais-tu ?',
+              actions: [
+                { label: '↩ Répondre',         value: 'reply',    correct: false, explanation: 'Non ! Répondre confirme que ton adresse est active et t\'expose à encore plus de spam.' },
+                { label: '↩↩ Répondre à tous', value: 'replyall', correct: false, explanation: 'Non. Même problème que "Répondre" : ne jamais interagir avec un e-mail suspect.' },
+                { label: '→ Transférer',        value: 'forward',  correct: false, explanation: 'Non. Tu ne dois pas propager un e-mail frauduleux.' },
+                { label: '🗑️ Supprimer',        value: 'delete',   correct: true,  explanation: 'Parfait ! C\'est du phishing. Ne jamais cliquer sur les liens, ne jamais répondre. On supprime et c\'est tout.' }
+              ]
+            },
+            {
+              email: {
+                from: 'jdupuis@eduge.ch', fromLabel: 'Mme Dupuis (Sciences)',
+                to: 'groupe4@eduge.ch', toLabel: 'groupe4 (toi + 4 camarades)',
+                subject: 'Confirmation des rôles — répondez chacun',
+                body: 'Bonjour groupe 4,\n\nPour le projet, merci de me confirmer votre rôle par retour d\'e-mail. Je dois recevoir une réponse de chaque membre.\n\nMme Dupuis'
+              },
+              question: 'Tu veux confirmer ton rôle à Mme Dupuis. Que fais-tu ?',
+              actions: [
+                { label: '↩ Répondre',         value: 'reply',    correct: true,  explanation: 'Correct ! Mme Dupuis veut une réponse individuelle de chacun. "Répondre à tous" enverrait ta réponse aux 4 camarades aussi, sans utilité.' },
+                { label: '↩↩ Répondre à tous', value: 'replyall', correct: false, explanation: 'Non. Tes camarades n\'ont pas besoin de connaître ton rôle par e-mail. Seule Mme Dupuis en a besoin.' },
+                { label: '→ Transférer',        value: 'forward',  correct: false, explanation: 'Non. Transférer sert à envoyer à quelqu\'un qui n\'a pas reçu l\'e-mail original.' },
+                { label: '🗑️ Supprimer',        value: 'delete',   correct: false, explanation: 'Non. Mme Dupuis attend ta réponse !' }
+              ]
+            }
+          ]
+        }
+      },
+      {
         id: 'courriel-sorter',
         type: 'sorter',
         icon: '🗂️',
