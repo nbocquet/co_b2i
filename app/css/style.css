@@ -971,3 +971,44 @@ body {
 }
 .fm-ok { background: var(--correct-bg); color: var(--correct); }
 .fm-ko { background: var(--wrong-bg); color: var(--wrong); }
+
+/* Drag states */
+.fm-file { cursor: grab; }
+.fm-file:active { cursor: grabbing; }
+.fm-file.fm-dragging { opacity: .35; pointer-events: none; }
+
+.fm-drag-handle {
+  font-size: 1rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  padding-left: 2px;
+  cursor: grab;
+}
+
+.fm-folder.fm-drag-over {
+  border-color: var(--fcolor, #84cc16) !important;
+  background: color-mix(in srgb, var(--fcolor, #84cc16) 15%, transparent);
+  transform: scale(1.04);
+}
+
+/* Ghost element that follows the finger/cursor during touch drag */
+.fm-ghost {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface2);
+  border: 2px solid var(--accent, #84cc16);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: .9rem;
+  font-weight: 600;
+  box-shadow: 0 8px 28px rgba(0,0,0,.5);
+  transform: scale(1.06) rotate(1.5deg);
+  white-space: nowrap;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

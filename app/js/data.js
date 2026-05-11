@@ -647,24 +647,23 @@ const THEMES = [
         title: 'L\'explorateur de fichiers',
         data: {
           folders: [
-            { name: 'Documents',  icon: '📄', color: '#4361ee' },
-            { name: 'Images',     icon: '🖼️', color: '#e11d48' },
-            { name: 'Musique',    icon: '🎵', color: '#8b5cf6' },
-            { name: 'Tableurs',   icon: '📊', color: '#10b981' },
-            { name: 'Vidéos',     icon: '🎬', color: '#f59e0b' }
+            { name: 'Documents', icon: '📄', color: '#4361ee' },
+            { name: 'Images',    icon: '🖼️', color: '#e11d48' },
+            { name: 'Musique',   icon: '🎵', color: '#8b5cf6' },
+            { name: 'Vidéos',    icon: '🎬', color: '#f59e0b' }
           ],
           files: [
-            { name: 'rapport_vacances',  ext: '.docx', folder: 'Documents' },
-            { name: 'notes_cours',       ext: '.odt',  folder: 'Documents' },
-            { name: 'cours_maths',       ext: '.pdf',  folder: 'Documents' },
-            { name: 'photo_famille',     ext: '.jpg',  folder: 'Images'    },
-            { name: 'logo_ecole',        ext: '.png',  folder: 'Images'    },
-            { name: 'animation',         ext: '.gif',  folder: 'Images'    },
-            { name: 'ma_chanson',        ext: '.mp3',  folder: 'Musique'   },
-            { name: 'podcast_science',   ext: '.ogg',  folder: 'Musique'   },
-            { name: 'budget_mensuel',    ext: '.xlsx', folder: 'Tableurs'  },
-            { name: 'comptes_classe',    ext: '.ods',  folder: 'Tableurs'  },
-            { name: 'film_classe',       ext: '.mp4',  folder: 'Vidéos'    }
+            { name: 'rapport_vacances', ext: '.docx', folder: 'Documents' },
+            { name: 'notes_cours',      ext: '.odt',  folder: 'Documents' },
+            { name: 'cours_maths',      ext: '.pdf',  folder: 'Documents' },
+            { name: 'liste_classes',    ext: '.txt',  folder: 'Documents' },
+            { name: 'photo_famille',    ext: '.jpg',  folder: 'Images'    },
+            { name: 'logo_ecole',       ext: '.png',  folder: 'Images'    },
+            { name: 'animation',        ext: '.gif',  folder: 'Images'    },
+            { name: 'ma_chanson',       ext: '.mp3',  folder: 'Musique'   },
+            { name: 'podcast_science',  ext: '.ogg',  folder: 'Musique'   },
+            { name: 'film_classe',      ext: '.mp4',  folder: 'Vidéos'    },
+            { name: 'tutoriel_scratch', ext: '.mp4',  folder: 'Vidéos'    }
           ]
         }
       },
