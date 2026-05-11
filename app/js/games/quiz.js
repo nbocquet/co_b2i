@@ -38,10 +38,19 @@ const QuizGame = {
       </div>`;
 
     const grid = this._container.querySelector('#quiz-answers');
+    const illustrated = q.answers.length && typeof q.answers[0] === 'object';
+    if (illustrated) grid.classList.add('viz');
     q.answers.forEach((ans, i) => {
       const btn = document.createElement('button');
-      btn.className = 'quiz-btn';
-      btn.textContent = ans;
+      if (illustrated) {
+        btn.className = 'quiz-btn-viz';
+        const svgKey = ans.svg;
+        const svgHtml = (typeof SVGs !== 'undefined' && SVGs[svgKey]) ? SVGs[svgKey] : '';
+        btn.innerHTML = `<span class="viz-svg">${svgHtml}</span><span class="viz-label">${ans.text}</span>`;
+      } else {
+        btn.className = 'quiz-btn';
+        btn.textContent = ans;
+      }
       btn.addEventListener('click', () => this._pick(i));
       grid.appendChild(btn);
     });
@@ -55,7 +64,9 @@ const QuizGame = {
     const correct = index === q.correct;
     if (correct) this._score++;
 
-    const btns = this._container.querySelectorAll('.quiz-btn');
+    const illustrated = typeof q.answers[0] === 'object';
+    const btnClass = illustrated ? '.quiz-btn-viz' : '.quiz-btn';
+    const btns = this._container.querySelectorAll(btnClass);
     btns.forEach((btn, i) => {
       btn.disabled = true;
       if (i === q.correct) btn.classList.add('correct');

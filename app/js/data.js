@@ -81,6 +81,82 @@ const THEMES = [
             { label: '📱 Écran tactile', cat: 'Entrée / Sortie' }
           ]
         }
+      },
+      {
+        id: 'composants-visual',
+        type: 'quiz',
+        icon: '🖼️',
+        title: 'Reconnais les composants',
+        data: {
+          questions: [
+            {
+              q: 'Parmi ces appareils, lequel est un périphérique d\'ENTRÉE ?',
+              answers: [
+                { text: 'Microphone', svg: 'microphone' },
+                { text: 'Imprimante', svg: 'imprimante' },
+                { text: 'Haut-parleurs', svg: 'hautparleurs' },
+                { text: 'Écran', svg: 'ecran' }
+              ],
+              correct: 0,
+              explanation: 'Le microphone capte le son et l\'envoie à l\'ordinateur : c\'est un périphérique d\'entrée. Les autres sont des périphériques de sortie.'
+            },
+            {
+              q: 'Quel composant est le "cerveau" de l\'ordinateur ?',
+              answers: [
+                { text: 'Processeur (CPU)', svg: 'processeur' },
+                { text: 'Barrette RAM', svg: 'ram' },
+                { text: 'Disque dur', svg: 'disquedur' },
+                { text: 'Webcam', svg: 'webcam' }
+              ],
+              correct: 0,
+              explanation: 'Le processeur (CPU) exécute toutes les instructions des programmes. C\'est lui le cerveau de la machine !'
+            },
+            {
+              q: 'Lequel est un périphérique d\'ENTRÉE ET de SORTIE ?',
+              answers: [
+                { text: 'Clé USB', svg: 'cleusb' },
+                { text: 'Clavier', svg: 'clavier' },
+                { text: 'Haut-parleurs', svg: 'hautparleurs' },
+                { text: 'Imprimante', svg: 'imprimante' }
+              ],
+              correct: 0,
+              explanation: 'Une clé USB permet de lire (entrée) et d\'écrire (sortie) des données : c\'est donc un périphérique d\'entrée ET de sortie.'
+            },
+            {
+              q: 'Quel composant stocke définitivement tes fichiers ?',
+              answers: [
+                { text: 'Disque dur', svg: 'disquedur' },
+                { text: 'Processeur', svg: 'processeur' },
+                { text: 'Webcam', svg: 'webcam' },
+                { text: 'Carte réseau', svg: 'cartereseau' }
+              ],
+              correct: 0,
+              explanation: 'Le disque dur conserve tes fichiers même quand l\'ordinateur est éteint. La RAM, elle, se vide à chaque extinction.'
+            },
+            {
+              q: 'Quel appareil te connecte à Internet ou à un réseau ?',
+              answers: [
+                { text: 'Carte réseau', svg: 'cartereseau' },
+                { text: 'Disque dur', svg: 'disquedur' },
+                { text: 'Microphone', svg: 'microphone' },
+                { text: 'RAM', svg: 'ram' }
+              ],
+              correct: 0,
+              explanation: 'La carte réseau (Ethernet ou Wi-Fi) est l\'interface qui relie ton ordinateur à un réseau local ou à Internet.'
+            },
+            {
+              q: 'Lequel capture des images pour les appels vidéo ?',
+              answers: [
+                { text: 'Webcam', svg: 'webcam' },
+                { text: 'Souris', svg: 'souris' },
+                { text: 'Clé USB', svg: 'cleusb' },
+                { text: 'Haut-parleurs', svg: 'hautparleurs' }
+              ],
+              correct: 0,
+              explanation: 'La webcam est une caméra qui capture des images en temps réel. C\'est elle qui te filme lors d\'une visioconférence.'
+            }
+          ]
+        }
       }
     ]
   },
